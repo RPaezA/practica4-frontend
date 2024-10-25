@@ -6,12 +6,14 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthService } from '../auth/services/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AppLayoutModule } from './layout/app.layout.module';
 
 @NgModule({
   providers:[
     AuthService
   ],
-
   declarations: [
     PerfilComponent,
     ClienteComponent,
@@ -19,9 +21,10 @@ import { AuthService } from '../auth/services/auth.service';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppLayoutModule
   ]
 })
 export class AdminModule { }
-
-
