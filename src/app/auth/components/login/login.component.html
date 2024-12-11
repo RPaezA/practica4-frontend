@@ -19,13 +19,16 @@
                 <input type="checkbox" id="rememberMe" formControlName="rememberMe" />
                 <label for="rememberMe">Recuérdame</label>
               </div>
-              <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">¿Olvidó la contraseña?</a>
+              <a routerLink="/forgot-password" class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">¿Olvidó la contraseña?</a>
             </div>
             
-            <button pbutton="" pripple="" label="Iniciar sesión" class="p-element w-full p-3 text-xl p-button p-component" ng-reflect-label="Iniciar sesión" [disabled]="!loginForm.valid">
+            <button pbutton="" pripple="" label="Iniciar sesión" class="p-element w-full p-3 text-xl p-button p-component" ng-reflect-label="Iniciar sesión" (click)="funIngresar()" [disabled]="!loginForm.valid">
                 <span class="p-button-label">Iniciar sesión</span>
             </button>
-
+            <h5 class="Crear usuario">
+             
+              <a routerLink="/auth/register" class="font-medium no-underline ml-2 text-center cursor-pointer" style="color: var(--primary-color)" >Crear usuario? Registrar</a>
+            </h5>
            
           </form>
         </div>

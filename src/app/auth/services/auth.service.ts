@@ -15,9 +15,12 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/auth/login`, credenciales)
   }
 
-   
-
   registroConNest(datos:any){
-    return this.http.post<any>(`${this.baseUrl}/register`,datos)
+    return this.http.post<any>(`${this.baseUrl}/auth/register`,datos)
   }
+
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/forgot-password`, { email });
+  }  
 }
+
