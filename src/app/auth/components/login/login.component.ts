@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +16,17 @@ export class LoginComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
     rememberMe: new FormControl(false),
-    //forgotPasswordForm: new FormControl()
+
+
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  showPassword: boolean = false; // Estado inicial: contraseña oculta
+
+  constructor(private authService: AuthService, private router: Router) { }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword; // Alterna entre true y false
+  }
 
   ngOnInit(): void {
     // Verificar si estamos en el navegador y si hay un correo guardado
@@ -46,7 +54,7 @@ export class LoginComponent implements OnInit {
       }
     }
 
-    
+
 
     // Llamar al servicio de autenticación para procesar el login
     this.authService.loginConNest(this.loginForm.value).subscribe(
@@ -56,21 +64,38 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.alerta("Error al iniciar sesión", "¡Verifica los datos!", "error")
+        this.loginForm.reset();
+        this.router.navigate(['/auth/login'])
+
       }
     );
   }
 
-  funIngresar(){
+  funIngresar() {
     this.authService.loginConNest(this.loginForm.value).subscribe(
-      (res)=>{
+      (res) => {
         console.log(res)
         localStorage.setItem("access_token", res.token)
         this.router.navigate(["/admin"])
       },
-      (error)=>{
+      (error) => {
         console.log(error)
+        this.alerta("Error al iniciar sesión", "¡Verifica los datos!", "error")
+        this.loginForm.reset();
+        this.router.navigate(['/auth/login'])
+
       }
     )
     //alert("Ingresando...")
   }
+
+  onForgotPassword() {
+    this.router.navigate(['/auth/forgot-password']); // Redirige a la pantalla de recuperación
+  }
+
+  alerta(title: string, text: string, icon: 'success' | 'error' | 'info' | 'question') {
+    Swal.fire({ title, text, icon });
+  }
+
 }
