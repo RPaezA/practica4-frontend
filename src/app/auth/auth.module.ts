@@ -7,8 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {PasswordModule} from 'primeng/password'
 import { PrimengModule } from '../primeng/primeng.module';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   
@@ -24,7 +26,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     ReactiveFormsModule,
     HttpClientModule, 
     PasswordModule,
-    PrimengModule
+    PrimengModule,
+    RouterModule
+    
     
   ]
 })
