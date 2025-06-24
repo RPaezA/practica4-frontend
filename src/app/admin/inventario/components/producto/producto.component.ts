@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ProductoService } from '../../services/producto.service';
 
 @Component({
   selector: 'app-producto',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
   
 })
 export class ProductoComponent {
+  private productoService=inject(ProductoService);
   products:any[] = [
     {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
     {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
@@ -33,6 +35,14 @@ export class ProductoComponent {
     { field: 'estado', header: 'Estado' }
   ];
   
+  constructor() {
+    // Cargar productos desde el servicio
+    this.productoService.funlistar().subscribe(
+      (res:any) => {
+      this.products = res.data;
+    });
+  }
+
   exportarProductosPersonalizado() {
     const encabezados = this.cols.map(col => col.header).join(',');
     const filas = this.products.map(product => 

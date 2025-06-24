@@ -11,9 +11,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { RouterModule } from '@angular/router';
 
-
 @NgModule({
-  
   declarations: [
     LoginComponent,
     RegisterComponent,
@@ -28,8 +26,6 @@ import { RouterModule } from '@angular/router';
     PasswordModule,
     PrimengModule,
     RouterModule
-    
-    
   ]
 })
 export class AuthModule { }
