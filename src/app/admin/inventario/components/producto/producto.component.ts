@@ -9,23 +9,7 @@ import { ProductoService } from '../../services/producto.service';
 })
 export class ProductoComponent {
   private productoService=inject(ProductoService);
-  products:any[] = [
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-    {id:1, nombre:"Teclado", precio:100, categoria_id:5, stock:12},
-  ];
+  products:any[] = [];
   cols:any[] = [
     { field: 'id', header: 'Id' },
     { field: 'nombre', header: 'Nombre' },
